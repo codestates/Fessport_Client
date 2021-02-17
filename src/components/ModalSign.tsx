@@ -123,7 +123,7 @@ export const SignModal = ({ isOpen, onClose }: ModalProps) => {
                   <>
                     <Attribute>
                       <ModalList>
-                        <Label> EMAIL: </Label>
+                        <Label>* EMAIL: </Label>
                         <Input
                           defaultValue=""
                           type="email"
@@ -131,7 +131,7 @@ export const SignModal = ({ isOpen, onClose }: ModalProps) => {
                         />
                       </ModalList>
                       <ModalList>
-                        <Label> NICK NAME: </Label>
+                        <Label>* NICK NAME: </Label>
                         <Input
                           defaultValue=""
                           type="text"
@@ -141,7 +141,7 @@ export const SignModal = ({ isOpen, onClose }: ModalProps) => {
                     </Attribute>
                     <Attribute>
                       <ModalList>
-                        <Label> PASSWORD: </Label>
+                        <Label>* PASSWORD: </Label>
                         <Input
                           defaultValue=""
                           type="password"
@@ -149,7 +149,7 @@ export const SignModal = ({ isOpen, onClose }: ModalProps) => {
                         />
                       </ModalList>
                       <ModalList>
-                        <Label> CONFIRM YOUR PASSWORD: </Label>
+                        <Label>* CONFIRM YOUR PASSWORD: </Label>
                         <Input
                           defaultValue=""
                           type="password"

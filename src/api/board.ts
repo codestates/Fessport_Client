@@ -78,7 +78,7 @@ interface BoardInfo {
   boardCategoryId: string;
   title: string;
   description: string;
-  Image: string | null;
+  image: string | null;
 }
 
 export interface Imessage {

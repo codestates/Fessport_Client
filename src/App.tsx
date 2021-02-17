@@ -12,7 +12,6 @@ import ArtistListPage from './pages/ArtistListPage';
 import ArtistDetailPage from './pages/ArtistDetailPage';
 import WishListPage from './pages/WishListPage';
 import ReviewPage from './pages/ReviewPage';
-import Footer from './containers/FooterContainer';
 
 const App = (): JSX.Element => {
   return (

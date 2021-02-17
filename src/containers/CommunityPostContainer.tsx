@@ -15,7 +15,7 @@ const CommunityPostContainer = (): JSX.Element => {
   const [category, setCategory] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [typePost, setTypePost] = useState<string>('');
+
   const { imageData } = useSelector((state: RootState) => state.image);
 
   // FESTIVAL 정보 받아와서 카테고리 만들어주기.
@@ -40,30 +40,33 @@ const CommunityPostContainer = (): JSX.Element => {
 
   //------------------ POST BOARD logic ----------------
   const onSubmitHandler = () => {
-    if (category && festivalId && description && typePost && title) {
-      const form = {
-        festivalId: festivalId,
-        boardCategoryId: category,
-        title: title,
-        description: description,
-        Image: imageData,
-      };
+    // if (category && festivalId && description && title) {
+    const form = {
+      festivalId: festivalId,
+      boardCategoryId: category,
+      title: title,
+      description: description,
+      image: imageData,
+    };
 
-      dispatch(
-        postBoardAsync.request({
-          postBoardData: form,
-        }),
-      );
-      if (category === '60173438054e876dd74af2e3') {
-        dispatch(getBoardAsync.request('60173438054e876dd74af2e3'));
-        history.push(`/companion`);
-      } else if (category === '60173438054e876dd74af2e4') {
-        dispatch(getBoardAsync.request('60173438054e876dd74af2e4'));
-        history.push(`/resell`);
-      }
-      // else if (category === '60173438054e876dd74af2e3') {
-      //   dispatch(getBoardAsync.request('60173438054e876dd74af2e3'));
-      //   history.push(`/review`);
+    console.log(imageData);
+
+    dispatch(
+      postBoardAsync.request({
+        postBoardData: form,
+      }),
+    );
+    // }
+
+    if (category === '60173438054e876dd74af2e3') {
+      dispatch(getBoardAsync.request('60173438054e876dd74af2e3'));
+      history.push(`/companion`);
+    } else if (category === '60173438054e876dd74af2e4') {
+      dispatch(getBoardAsync.request('60173438054e876dd74af2e4'));
+      history.push(`/resell`);
+    } else if (category === '602b843b018d510ec91de5c9') {
+      dispatch(getBoardAsync.request('602b843b018d510ec91de5c9'));
+      history.push(`/review`);
     }
   };
 
@@ -87,13 +90,14 @@ const CommunityPostContainer = (): JSX.Element => {
                 />
                 Min. 10. Max. 80
                 <Post_Type onChange={(e) => setCategory(e.target.value)}>
+                  <option> 카테고리를 선택하세요. </option>
                   <option value="60173438054e876dd74af2e3">
                     * 동행 글 쓰기
                   </option>
                   <option value="60173438054e876dd74af2e4">
                     * 사고팔기 글 쓰기
                   </option>
-                  <option value="60173438054e876dd74af2e4">
+                  <option value="602b843b018d510ec91de5c9">
                     * 리뷰 글 쓰기
                   </option>
                 </Post_Type>
@@ -114,7 +118,8 @@ const CommunityPostContainer = (): JSX.Element => {
                   placeholder="내용을 입력하세요."
                   onChange={(e) => setDescription(e.target.value)}
                 />
-                {category === '60173438054e876dd74af2e4' ? (
+                {category === '60173438054e876dd74af2e4' ||
+                category === '602b843b018d510ec91de5c9' ? (
                   <File>
                     <File_Label htmlFor="input-file">UPLOAD</File_Label>
                     <File_upload
@@ -137,7 +142,6 @@ const CommunityPostContainer = (): JSX.Element => {
                   onClick={onSubmitHandler}
                 />
                 <Wall />
-                {/* <input type="submit" className="footer_btn" value="BACK >" /> */}
               </Footer>
             </Post>
           </CompanionPost>

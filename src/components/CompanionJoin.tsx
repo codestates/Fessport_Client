@@ -56,6 +56,7 @@ const CompanionJoin = ({
     console.log('board id: !!', boardId);
     dispatch(deleteBoardAsync.request({ boardId: boardId }));
     history.push(`/companion`);
+    dispatch(getBoardAsync.request('60173438054e876dd74af2e3'));
   };
 
   // ----------------------- Participants logic --------------------------

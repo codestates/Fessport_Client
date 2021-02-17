@@ -13,7 +13,6 @@ interface KeyboardEvent {
 const ReviewContainer = (): JSX.Element => {
   const dispatch = useDispatch();
   const { data } = useSelector((state: RootState) => state.boardData.boardData);
-
   const [selected, setSelected] = useState(-1);
 
   const handleUserKeyPress = useCallback(
@@ -34,7 +33,6 @@ const ReviewContainer = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(getBoardAsync.request('602b843b018d510ec91de5c9'));
-
     window.addEventListener('keydown', handleUserKeyPress);
     return () => {
       window.removeEventListener('keydown', handleUserKeyPress);

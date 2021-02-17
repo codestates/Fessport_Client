@@ -34,6 +34,7 @@ const ResellDetail = ({
   const { login } = useSelector((state: RootState) => state.login.userInfo);
   const history = useHistory();
   const [commentId, setCommentId] = useState<string>('');
+
   const deleteCommentHandler = () => {
     const dele = { commentId: commentId };
     dispatch(
@@ -41,7 +42,7 @@ const ResellDetail = ({
         commentData: dele,
       }),
     );
-    history.push('/companion');
+    history.push('/resell');
   };
   //---------------------- DELETE BOARD logic
   const deleteBoardHandler = (): void => {
@@ -51,7 +52,7 @@ const ResellDetail = ({
           boardId: boardId,
         }),
       );
-      history.push('/companion');
+      history.push('/resell');
     }
   };
   // ----------------------- comment logic --------------------------

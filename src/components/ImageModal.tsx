@@ -5,7 +5,9 @@ import { BsTrash } from 'react-icons/bs';
 import Moment from 'moment';
 import 'moment/locale/en-nz';
 import { deleteBoardAsync } from '../modules/board/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../modules';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   url: string;
@@ -36,6 +38,8 @@ const ImageModal = ({
 }: Props) => {
   const contentRef = createRef<HTMLDivElement>();
   const dispatch = useDispatch();
+  const history = useHistory();
+  const nick = useSelector((state: RootState) => state.userInfo.data?.nickName);
 
   const handleClick = (event: MouseEvent) => {
     const { current } = contentRef;
@@ -45,7 +49,10 @@ const ImageModal = ({
   };
 
   const deleteHandler = (): void => {
+    console.log(_id);
     dispatch(deleteBoardAsync.request({ boardId: _id }));
+    onClose();
+    history.push('/review');
   };
 
   return (
